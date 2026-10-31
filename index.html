@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Oud Fragance · Catálogo de Perfumes</title>
+<style>
+:root{box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:56px}
+body{margin:0;background:#0d0d0f;color:#fff;font-family:Georgia,'Times New Roman',serif}
+nav{position:sticky;top:env(safe-area-inset-top,0px);z-index:20;display:flex;gap:8px;overflow-x:auto;padding:10px 12px;background:rgba(13,13,15,.92);backdrop-filter:blur(8px)}
+nav a{flex:none;color:#fff;text-decoration:none;font:600 13px system-ui,sans-serif;padding:7px 12px;border-radius:99px;border:1px solid var(--c)}
+.hero{min-height:80vh;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;padding:32px 20px;background:radial-gradient(circle at 50% 30%,#2a2a33,#0d0d0f 70%)}
+.sub{font:600 13px system-ui,sans-serif;letter-spacing:.35em;text-transform:uppercase;opacity:.7;margin-bottom:14px}
+.hero h1{font-size:clamp(34px,9vw,64px);margin:0 0 10px;letter-spacing:.04em;font-weight:400}
+.hero p{font:16px/1.5 system-ui,sans-serif;opacity:.75;max-width:420px;margin:6px 0}
+.hero small{margin-top:26px;opacity:.5;font:13px system-ui,sans-serif}
+section.p{position:relative;min-height:100vh;display:flex;align-items:center;justify-content:center;padding:70px 20px;overflow:hidden;background:var(--bg);color:var(--tx)}
+.f{position:absolute;bottom:-60px;opacity:0;animation:up linear infinite;pointer-events:none;filter:drop-shadow(0 2px 6px rgba(0,0,0,.25))}
+@keyframes up{0%{transform:translateY(0) rotate(0);opacity:0}15%{opacity:.7}100%{transform:translateY(-115vh) rotate(300deg);opacity:0}}
+.card{position:relative;z-index:2;width:100%;max-width:480px;padding:28px 24px;border-radius:24px;background:var(--card);border:1px solid var(--ac);backdrop-filter:blur(6px)}
+.bt{display:block;margin:0 auto 14px;height:230px;max-width:100%;object-fit:contain;filter:drop-shadow(0 12px 18px rgba(0,0,0,.45))}
+.brand{font:600 12px system-ui,sans-serif;letter-spacing:.3em;text-transform:uppercase;color:var(--ac)}
+h2{font-size:clamp(30px,8vw,44px);line-height:1.1;margin:8px 0 6px;font-weight:400}
+.tag{font-style:italic;opacity:.85;margin:0 0 20px;font-size:17px}
+.notes{display:grid;gap:10px;margin-bottom:22px;font:14px/1.45 system-ui,sans-serif}
+.notes div{padding:10px 12px;border-radius:12px;background:rgba(255,255,255,.1)}
+.notes b{display:block;font-size:11px;letter-spacing:.15em;text-transform:uppercase;color:var(--ac);margin-bottom:2px}
+.prices{display:flex;gap:12px}
+.pr{flex:1;text-align:center;padding:14px 8px;border-radius:16px;background:var(--ac);color:var(--bt)}
+.pr span{display:block;font:600 12px system-ui,sans-serif;letter-spacing:.1em;text-transform:uppercase;opacity:.8}
+.pr strong{font-size:26px}
+footer{padding:36px 20px;text-align:center;font:13px/1.6 system-ui,sans-serif;opacity:.6;background:#0d0d0f}
+</style>
+</head>
+<body>
+<header class="hero">
+  <h1>Oud Fragance</h1>
+  <div class="sub">Catálogo de Perfumes</div>
+  <p>Decants de perfumes originales en 5 ml y 10 ml. Deslizá y dejate llevar por cada aroma.</p>
+  <p>Consultá disponibilidad y pedí el tuyo por mensaje.</p>
+  <small>↓ Mirá cada fragancia ↓</small>
+</header>
+<nav id="nav"></nav>
+<main id="main"></main>
+<footer>Precios por decant. Las notas olfativas son orientativas.<br>Consultá disponibilidad por mensaje.</footer>
+<script>
+const P=[
+{id:"erba-pura",b:"Xerjoff",n:"Erba Pura",t:"Un mediterráneo dulce, soleado y adictivo.",bg:"linear-gradient(160deg,#0e7c8f,#1fb0b5 55%,#f5c76a)",ac:"#f2cf72",bt:"#12303a",tx:"#fff",card:"rgba(8,60,75,.55)",e:["🍊","🍋","🍑","🍍","🌊"],s:"Naranja siciliana, limón, bergamota y frutas",c:"Frutas dulces y jugosas",f:"Vainilla, ámbar y almizcle",a:38000,b5:19000},
+{id:"erba-gold",b:"Xerjoff",n:"Erba Gold",t:"Dorado como el sol: cítrico, tropical y cálido.",bg:"linear-gradient(160deg,#e8a200,#f6c821 55%,#fff0a8)",ac:"#7a4a00",bt:"#fff",tx:"#3b2500",card:"rgba(255,244,190,.6)",e:["🍋","🍍","🍯","✨","🌼"],s:"Limón, bergamota y naranja",c:"Fruta tropical y notas florales",f:"Vainilla, ámbar, almizcle y maderas",a:40000,b5:20000},
+{id:"le-beau",b:"Jean Paul Gaultier",n:"Le Beau Le Parfum",t:"Isla tropical de noche: coco, madera y misterio.",bg:"linear-gradient(170deg,#02161a,#05494f 60%,#0c7a6e)",ac:"#e2c274",bt:"#04201f",tx:"#fff",card:"rgba(0,20,22,.6)",e:["🥥","🌴","🍃","🌙","🌊"],s:"Bergamota y notas verdes",c:"Coco cremoso",f:"Haba tonka y maderas",a:27000,b5:12500},
+{id:"valentino",b:"Valentino",n:"Born in Roma Extradose",t:"Roma de noche: elegante, intensa y rebelde.",bg:"linear-gradient(160deg,#0a0a0a,#2a0a1e 60%,#5a1038)",ac:"#e0447f",bt:"#fff",tx:"#fff",card:"rgba(0,0,0,.6)",e:["🖤","💎","🌿","🔥","🏛️"],s:"Bergamota, salvia y pimienta",c:"Notas minerales y especiadas",f:"Vetiver, maderas y vainilla",a:28000,b5:14000},
+{id:"sauvage",b:"Dior",n:"Sauvage Parfum",t:"Magnético, nocturno y salvaje como el desierto.",bg:"linear-gradient(180deg,#050a1c,#0f2457 55%,#7a3b10 100%)",ac:"#e6a24a",bt:"#0a1230",tx:"#fff",card:"rgba(4,10,30,.6)",e:["🌵","✨","🌙","🔥","💜"],s:"Bergamota y especias",c:"Lavanda aromática",f:"Sándalo y vainilla ambarada",a:25000,b5:12500},
+{id:"versace",b:"Versace Man",n:"Eau Fraîche",t:"Brisa de mar, frescura pura y verano eterno.",bg:"linear-gradient(180deg,#bfe8ff,#4fb4ef 55%,#1a74c4)",ac:"#0a3d73",bt:"#fff",tx:"#06294d",card:"rgba(255,255,255,.55)",e:["💧","🫧","🍋","🌿","🐚"],s:"Limón, bergamota y rosa",c:"Cedro y estragón",f:"Ámbar, almizcle y sándalo",a:21000,b5:10500},
+{id:"mandarin",b:"Armaf Odyssey",n:"Mandarin Sky Elixir",t:"Atardecer naranja: dulce, vibrante y divertido.",bg:"linear-gradient(160deg,#ff8a00,#ffb02e 55%,#2f5cff)",ac:"#1f46d9",bt:"#fff",tx:"#fff",card:"rgba(190,80,0,.45)",e:["🍊","🍊","🧡","☁️","✨"],s:"Mandarina y cítricos",c:"Notas dulces y aromáticas",f:"Vainilla y ámbar",a:9000,b5:4500},
+{id:"club-de-nuit",b:"Armaf",n:"Club de Nuit Iconic",t:"Noche de club: azul eléctrico, fresco y poderoso.",bg:"linear-gradient(160deg,#001a8f,#0a3de0 55%,#9fb4ff)",ac:"#e8e8f4",bt:"#0a1a70",tx:"#fff",card:"rgba(0,10,80,.55)",e:["⚡","💎","🍊","🌌","🥂"],s:"Cítricos y pimienta",c:"Notas aromáticas y especiadas",f:"Ámbar, almizcle y maderas",a:8000,b5:4000}
+];
+const $=n=>"$"+n.toLocaleString("es-AR");
+const nav=document.getElementById("nav"),main=document.getElementById("main");
+P.forEach(p=>{
+ nav.insertAdjacentHTML("beforeend",`<a href="#${p.id}" style="--c:${p.ac}">${p.n}</a>`);
+ let fl="";
+ for(let i=0;i<14;i++){fl+=`<span class="f" style="left:${Math.random()*95}%;font-size:${20+Math.random()*28}px;animation-duration:${8+Math.random()*9}s;animation-delay:${-Math.random()*14}s">${p.e[i%p.e.length]}</span>`}
+ main.insertAdjacentHTML("beforeend",`<section class="p" id="${p.id}" style="--bg:${p.bg};--ac:${p.ac};--bt:${p.bt};--tx:${p.tx};--card:${p.card}">${fl}
+ <div class="card"><img class="bt" src="img/${p.id}.png" alt="${p.n}"><div class="brand">${p.b}</div><h2>${p.n}</h2><p class="tag">${p.t}</p>
+ <div class="notes"><div><b>Salida</b>${p.s}</div><div><b>Corazón</b>${p.c}</div><div><b>Fondo</b>${p.f}</div></div>
+ <div class="prices"><div class="pr"><span>5 ml</span><strong>${$(p.b5)}</strong></div><div class="pr"><span>10 ml</span><strong>${$(p.a)}</strong></div></div></div></section>`);
+});
+</script>
+</body>
+</html>
